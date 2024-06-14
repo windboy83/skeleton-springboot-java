@@ -1,0 +1,1 @@
+# skeleton-springboot-java
