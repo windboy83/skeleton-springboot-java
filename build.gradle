@@ -1,0 +1,64 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.3' apply(false)
+    id 'io.spring.dependency-management' version '1.1.4' apply(false)
+    id 'org.graalvm.buildtools.native' version '0.9.28' apply(false)
+}
+
+group = 'com.sample'
+version = '1.0.0-SNAPSHOT'
+
+java {
+    sourceCompatibility = '21'
+}
+
+repositories {
+    mavenCentral()
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+    ext {
+        set('springCloudVersion', "2023.0.0")
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+
+        compileOnly 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+
+        implementation 'org.apache.commons:commons-lang3:3.12.0'
+
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.1.0'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.1.0'
+    }
+
+    tasks.named('test', Test) {
+        useJUnitPlatform()
+    }
+}
+
+project(':general-api') {
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+    }
+}
+
+project(':virtual-thread-api') {
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+    }
+}
+
+project(':webflux-api') {
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    }
+}
