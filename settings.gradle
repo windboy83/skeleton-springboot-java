@@ -2,4 +2,5 @@ rootProject.name = 'skeleton-springboot-java'
 include 'general-api'
 include 'virtual-thread-api'
 include 'webflux-api'
+include 'domain-mysql'
 

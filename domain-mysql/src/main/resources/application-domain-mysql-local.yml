@@ -1,0 +1,45 @@
+
+spring:
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        format_sql: true
+        default_batch_fetch_size: 10000
+        jdbc:
+          batch_size: 10000
+          order_inserts: true
+          order_updates: true
+        show_sql: true
+        dialect: org.hibernate.dialect.MySQLDialect
+
+db-config:
+  master:
+    datasource:
+      hikari:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/sample?characterEncoding=UTF-8&rewriteBatchedStatements=true
+        username: sample
+        password: sample1234!@
+        auto-commit: true
+        connection-test-query: SELECT 1
+        minimum-idle: 1
+        maximum-pool-size: 5
+        transaction-isolation: TRANSACTION_READ_UNCOMMITTED
+        pool-name: hikari-pool-master-1
+  read:
+    datasource:
+      hikari:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/sample?characterEncoding=UTF-8
+        username: sample
+        password: sample1234!@
+        connection-test-query: SELECT 1
+        minimum-idle: 10
+        maximum-pool-size: 50
+        transaction-isolation: TRANSACTION_READ_UNCOMMITTED
+        pool-name: hikari-pool-read-1

@@ -1,0 +1,6 @@
+mysql:
+  db:
+    extra:
+      config:
+        min-idle: 10
+        max-pool-size: 50

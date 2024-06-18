@@ -2,7 +2,6 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.2.3' apply(false)
     id 'io.spring.dependency-management' version '1.1.4' apply(false)
-    id 'org.graalvm.buildtools.native' version '0.9.28' apply(false)
 }
 
 group = 'com.sample'
@@ -23,6 +22,7 @@ subprojects {
 
     ext {
         set('springCloudVersion', "2023.0.0")
+        set('queryDslVersion', '5.0.0')
     }
 
     repositories {
@@ -30,14 +30,26 @@ subprojects {
     }
 
     dependencies {
+        implementation(enforcedPlatform("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"))
+
+        implementation 'org.springframework.boot:spring-boot-starter'
+        implementation 'org.springframework.boot:spring-boot-starter-log4j2'
 
         compileOnly 'org.projectlombok:lombok'
         annotationProcessor 'org.projectlombok:lombok'
 
-        implementation 'org.apache.commons:commons-lang3:3.12.0'
+        implementation 'org.apache.commons:commons-lang3:3.14.0'
+
+        implementation 'mysql:mysql-connector-java:8.0.33'
 
         testImplementation 'org.junit.jupiter:junit-jupiter-api:5.1.0'
         testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.1.0'
+    }
+
+    configurations {
+        configureEach {
+            exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+        }
     }
 
     tasks.named('test', Test) {
@@ -45,9 +57,32 @@ subprojects {
     }
 }
 
-project(':general-api') {
+project(':domain-mysql') {
     dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+        implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+
+        // QueryDSL
+        implementation "com.querydsl:querydsl-jpa:${queryDslVersion}:jakarta"
+        annotationProcessor "com.querydsl:querydsl-apt:${dependencyManagement.importedProperties['querydsl.version']}:jakarta"
+        annotationProcessor "jakarta.annotation:jakarta.annotation-api"
+        annotationProcessor "jakarta.persistence:jakarta.persistence-api"
+
+        implementation 'com.zaxxer:HikariCP:5.1.0'
+    }
+}
+
+project(':general-api') {
+
+    dependencies {
+        implementation project(':domain-mysql')
         implementation 'org.springframework.boot:spring-boot-starter-web'
+    }
+
+    bootJar {
+        archiveBaseName = 'general-api'
+        archiveFileName = 'general-api.jar'
+        archiveVersion = '0.0.1'
     }
 }
 
@@ -55,10 +90,22 @@ project(':virtual-thread-api') {
     dependencies {
         implementation 'org.springframework.boot:spring-boot-starter-web'
     }
+
+    bootJar {
+        archiveBaseName = 'virtual-thread-api'
+        archiveFileName = 'virtual-thread-api.jar'
+        archiveVersion = '0.0.1'
+    }
 }
 
 project(':webflux-api') {
     dependencies {
         implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    }
+
+    bootJar {
+        archiveBaseName = 'general-api'
+        archiveFileName = 'general-api.jar'
+        archiveVersion = '0.0.1'
     }
 }
