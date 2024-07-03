@@ -1,5 +1,6 @@
 package com.sample.domain.mysql.config;
 
+import com.querydsl.jpa.JPQLTemplates;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +21,7 @@ public class QueryDSLConfig {
     @Primary
     @Bean(name = "queryFactory")
     public JPAQueryFactory queryFactory() {
-        return new JPAQueryFactory(masterEntityManager);
+        return new JPAQueryFactory(JPQLTemplates.DEFAULT, masterEntityManager);
     }
 
     @PersistenceContext(unitName = "read")
@@ -28,6 +29,6 @@ public class QueryDSLConfig {
 
     @Bean(name = "readQueryFactory")
     public JPAQueryFactory readQueryFactory() {
-        return new JPAQueryFactory(readEntityManager);
+        return new JPAQueryFactory(JPQLTemplates.DEFAULT, readEntityManager);
     }
 }

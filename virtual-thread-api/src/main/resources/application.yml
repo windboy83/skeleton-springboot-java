@@ -1,0 +1,23 @@
+#----------------------------------------------------------------------
+# Sever Port
+#----------------------------------------------------------------------
+server:
+  port: 8080
+  shutdown: graceful
+
+spring:
+  application:
+    name: general-api
+  profiles:
+    group:
+      local:
+        - local
+        - domain-mysql-local
+      dev:
+        - coredev
+      prod:
+        - coreprod
+  threads:
+    virtual:
+      enabled: true
+

@@ -3,4 +3,6 @@ include 'general-api'
 include 'virtual-thread-api'
 include 'webflux-api'
 include 'domain-mysql'
+include 'domain-mysql-nio'
+include 'core'
 

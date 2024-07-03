@@ -3,19 +3,21 @@ spring:
   jpa:
     open-in-view: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     properties:
       hibernate:
         format_sql: true
-        default_batch_fetch_size: 10000
+        default_batch_fetch_size: 1000
         jdbc:
-          batch_size: 10000
+          batch_size: 1000
           order_inserts: true
           order_updates: true
         show_sql: true
         dialect: org.hibernate.dialect.MySQLDialect
+        query:
+          fail_on_pagination_over_collection_fetch: true
 
 db-config:
   master:

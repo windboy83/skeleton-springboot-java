@@ -1,0 +1,22 @@
+#----------------------------------------------------------------------
+# Sever Port
+#----------------------------------------------------------------------
+server:
+  port: 8080
+  shutdown: graceful
+
+spring:
+  application:
+    name: webflux-api
+  profiles:
+    group:
+      local:
+        - local
+        - domain-mysql-nio-local
+      dev:
+        - coredev
+      prod:
+        - coreprod
+springdoc:
+  webjars:
+    prefix: ''

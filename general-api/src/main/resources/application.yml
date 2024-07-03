@@ -2,7 +2,7 @@
 # Sever Port
 #----------------------------------------------------------------------
 server:
-  port: 8080
+  port: 8081
   shutdown: graceful
 
 spring:
@@ -17,3 +17,4 @@ spring:
         - coredev
       prod:
         - coreprod
+
