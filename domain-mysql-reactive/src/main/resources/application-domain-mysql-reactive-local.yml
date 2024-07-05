@@ -1,0 +1,15 @@
+spring:
+  sample:
+    r2dbc:
+      ssl: true
+      driver: pool
+      protocol: mysql
+      host: 127.0.0.1
+      port: 3306
+      user: sample
+      password: sample1234!@
+      database: sample
+      initialSize: 5
+      maxSize: 10
+      validation-query: select 1
+      character-encoding: UTF-8

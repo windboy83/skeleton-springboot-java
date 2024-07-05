@@ -1,9 +1,12 @@
-mysql:
-  db:
-    extra:
-      config:
-        min-idle: 10
-        max-pool-size: 50
+extra:
+  config:
+    db:
+      mysql:
+        initialSize: 10
+        maxSize: 50
+      mongodb:
+        min-size: 10
+        max-size: 50
 
 #----------------------------------------------------------------------
 # Logging Configuration File Path

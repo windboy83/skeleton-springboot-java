@@ -2,7 +2,7 @@
 # Sever Port
 #----------------------------------------------------------------------
 server:
-  port: 8080
+  port: 8082
   shutdown: graceful
 
 spring:
@@ -12,7 +12,8 @@ spring:
     group:
       local:
         - local
-        - domain-mysql-nio-local
+        - domain-mysql-reactive-local
+        - domain-mongodb-reactive-local
       dev:
         - coredev
       prod:

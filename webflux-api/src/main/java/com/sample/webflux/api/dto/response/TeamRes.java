@@ -1,6 +1,6 @@
 package com.sample.webflux.api.dto.response;
 
-import com.sample.domain.mysql.nio.domain.Member;
+import com.sample.domain.reactive.mysql.domain.Member;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;

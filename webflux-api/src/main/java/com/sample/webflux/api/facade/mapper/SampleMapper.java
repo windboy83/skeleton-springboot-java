@@ -1,7 +1,7 @@
 package com.sample.webflux.api.facade.mapper;
 
-import com.sample.domain.mysql.nio.dto.command.TeamCommand;
-import com.sample.domain.mysql.nio.dto.info.TeamInfo;
+import com.sample.domain.reactive.mysql.dto.command.TeamCommand;
+import com.sample.domain.reactive.mysql.dto.info.TeamInfo;
 import com.sample.webflux.api.dto.request.TeamReq;
 import com.sample.webflux.api.dto.response.TeamRes;
 import org.mapstruct.InjectionStrategy;
