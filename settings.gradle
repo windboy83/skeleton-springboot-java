@@ -1,5 +1,9 @@
 rootProject.name = 'skeleton-springboot-java'
-include 'general-api'
-include 'virtual-thread-api'
+include 'webmvc-api'
 include 'webflux-api'
+include 'domain-mysql'
+include 'domain-mysql-reactive'
+include 'core'
+include 'domain-mongodb'
+include 'domain-mongodb-reactive'
 

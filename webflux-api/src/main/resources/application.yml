@@ -1,0 +1,23 @@
+#----------------------------------------------------------------------
+# Sever Port
+#----------------------------------------------------------------------
+server:
+  port: 8082
+  shutdown: graceful
+
+spring:
+  application:
+    name: webflux-api
+  profiles:
+    group:
+      local:
+        - local
+        - domain-mysql-reactive-local
+        - domain-mongodb-reactive-local
+      dev:
+        - coredev
+      prod:
+        - coreprod
+springdoc:
+  webjars:
+    prefix: ''

@@ -1,0 +1,15 @@
+extra:
+  config:
+    db:
+      mysql:
+        initialSize: 10
+        maxSize: 50
+      mongodb:
+        min-size: 10
+        max-size: 50
+
+#----------------------------------------------------------------------
+# Logging Configuration File Path
+#----------------------------------------------------------------------
+logging:
+  config: classpath:config/log-local.xml

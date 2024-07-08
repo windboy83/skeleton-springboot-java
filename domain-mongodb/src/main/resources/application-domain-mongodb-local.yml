@@ -1,0 +1,24 @@
+#----------------------------------------------------------------------
+# DB & Redis & document db
+#----------------------------------------------------------------------
+spring:
+  data:
+    mongodb:
+      #uri: mongodb://sample:sample1234!@@localhost:27017/sample?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false
+      auto-index-creation: false
+      host: localhost
+      port: 27017
+      username: sample
+      password: sample1234!@
+      database: sample
+      replica-set-name: rs0
+      uuidRepresentation: STANDARD
+      ssl:
+        enabled: true
+      autoIndexCreation: false
+      minSize: 5
+      maxSize: 10
+      maxConnecting: 10
+      maxConnectionLifeTime: 1
+      connectTimeout: 30
+      readTimeout: 30
