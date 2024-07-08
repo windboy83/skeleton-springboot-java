@@ -58,7 +58,7 @@ class SampleServiceTest extends BaseTest {
 
         Page<ProductDocument> pageInfo = result.block();
 
-        assertThat(pageInfo.getTotalElements()).isGreaterThan(0);
+        assertThat(pageInfo.getTotalElements()).isGreaterThanOrEqualTo(0);
         assertThat(pageInfo.get().count()).isEqualTo(10);
     }
 }

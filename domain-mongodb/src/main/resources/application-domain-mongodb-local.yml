@@ -4,13 +4,13 @@
 spring:
   data:
     mongodb:
-      #uri: mongodb://local_conn:Wconcept!%4034conn@item-dev-docdb.cluster-cdppg5dgajqc.ap-northeast-2.docdb.amazonaws.com:27017/wck_coupon?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false
+      #uri: mongodb://sample:sample1234!@@localhost:27017/sample?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false
       auto-index-creation: false
-      host: item-dev-docdb.cluster-cdppg5dgajqc.ap-northeast-2.docdb.amazonaws.com
+      host: localhost
       port: 27017
-      username: local_conn
-      password: Wconcept!@34conn
-      database: wck_coupon
+      username: sample
+      password: sample1234!@
+      database: sample
       replica-set-name: rs0
       uuidRepresentation: STANDARD
       ssl:
